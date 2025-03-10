@@ -24,4 +24,4 @@ ENV SQLALCHEMY_TRACK_MODIFICATIONS=False
 EXPOSE 5000
 
 
-CMD ["/start.sh"]
+CMD ["python", "start.py"]
