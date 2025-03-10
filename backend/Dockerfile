@@ -11,14 +11,13 @@ COPY requirements.txt ./
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app
+COPY . .
 
 ENV FLASK_APP=app
 ENV FLASK_ENV=development
 ENV SQLALCHEMY_DATABASE_URI=postgresql://root:your_password@postgres:5432/flask
 ENV SQLALCHEMY_TRACK_MODIFICATIONS=False
 
-RUN chmod +x start.sh
 
 EXPOSE 5000
 
