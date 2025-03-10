@@ -34,18 +34,26 @@ docker-compose up --build -d
 
 O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate. Para rodar o seed manualmente, execute:
 
+
 ```
-docker exec -it projectcomgraphql_web_1 flask db upgrade
-docker-compose exec web python3 -m app.database.seeder
+docker exec -it  project-suppliers_web_1 /bin/bash
+flask db upgrade
+
+
+```
+em seguida
+
+```
+ python3 -m app.database.seeder
 
 ```
 
 ### 3. Rodar os Testes Unitários com pytest
 
-Depois que o container estiver rodando, você pode rodar os testes unitários com pytest dentro do container. Para isso, execute os seguintes comandos:
+Depois que o container estiver rodando, você pode rodar os testes unitários com pytest dentro do container. Para isso, ainda dento do mesmo container (bash) execute os seguintes comandos:
 
 ```bash
-docker exec -it projectcomgraphql_web_1 /bin/bash
+
 pytest
 
 ```
@@ -60,6 +68,28 @@ O backend oferece um CRUD que pode ser testado via GraphQL. Utilize a URL:
 http://localhost:5000/graphql
 
 ```
+
+ - Para obter uma lista de todos os fornecedores cadastrados, utilize a seguinte query:
+ ```bash
+query {
+  fornecedores {
+    id
+    name
+    cnpj
+    state
+    costPerKwh
+    minKwhLimit
+    numClients
+    averageRating
+  }
+}
+```
+
+ - 
+ - 
+ - 
+ - 
+ - 
 
 ## Rodando o Frontend (React)
 
