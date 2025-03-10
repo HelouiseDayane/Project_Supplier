@@ -19,7 +19,7 @@ Antes de rodar o projeto, você precisa garantir que tenha o seguinte instalado:
 - [Node.js](https://nodejs.org/) (para o front-end React)
 - [Python 3](https://www.python.org/downloads/)
 
-## Rodando o Backend (Flask + GraphQL)
+## Executando o Backend (Flask + GraphQL) em cmd ou terminal
 
 ### 1. Executar o Docker
 
@@ -34,18 +34,15 @@ docker-compose up --build -d
 
 O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate. Para rodar o seed manualmente, execute:
 
-
-```
+```bash
 docker exec -it  project-suppliers_web_1 /bin/bash
 flask db upgrade
-
-
 ```
 em seguida
 
-```
+```bash
  python3 -m app.database.seeder
-
+ 
 ```
 
 ### 3. Rodar os Testes Unitários com pytest
@@ -69,7 +66,7 @@ http://localhost:5000/graphql
 
 ```
 
- - Para obter uma lista de todos os fornecedores cadastrados, utilize a seguinte query:
+ - Para obter uma lista de todos os fornecedores cadastrados, utilize a seguinte query em postman ou insmnia por exemplo:
  ```bash
 query {
   fornecedores {
@@ -85,11 +82,70 @@ query {
 }
 ```
 
- - 
- - 
- - 
- - 
- - 
+ - Para adicionar um novo fornecedor, utilize a seguinte mutation:
+ ```bash
+mutation {
+  createSupplier(
+    name: "Fornecedor X",
+    cnpj: "12345678000199",
+    state: "MG",
+    costPerKwh: 0.55,
+    minKwhLimit: 150,
+    numClients: 40,
+    averageRating: 4.3
+  ) {
+    id
+    name
+    cnpj
+  }
+}
+
+```
+
+ - Para atualizar um fornecedor existente, utilize a seguinte mutation:
+```bash
+mutation {
+  updateSupplier(
+    id: "1",
+    name: "Fornecedor A Atualizado",
+    cnpj: "12345678000101",
+    state: "SP",
+    costPerKwh: 0.5,
+    minKwhLimit: 100,
+    numClients: 50,
+    averageRating: 4.7
+  ) {
+    id
+    name
+    cnpj
+    state
+    costPerKwh
+    minKwhLimit
+    numClients
+    averageRating
+  }
+}
+
+
+```
+ - Para deletar um fornecedor, utilize a seguinte mutation:
+```bash
+mutation {
+  deleteSupplier(id: "2") {
+    id
+    name
+  }
+}
+
+
+```
+
+No terminal ou cmd do seu projeto execute exit e cd .. para voltar a pagina principal do projeto pra sair do container e começar o front.
+
+```bash
+exit 
+cd ..
+```
 
 ## Rodando o Frontend (React)
 
@@ -148,8 +204,9 @@ flask db upgrade
 
  - Executar o seed para preencher a tabela de fornecedores:
 
-  ```bash
-docker-compose exec web python3 -m app.database.seeder
+```bash
+ python3 -m app.database.seeder
+
 
 ```
 
