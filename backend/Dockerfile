@@ -19,7 +19,5 @@ ENV SQLALCHEMY_DATABASE_URI=postgresql://root:your_password@postgres:5432/flask
 ENV SQLALCHEMY_TRACK_MODIFICATIONS=False
 
 
-EXPOSE 5000
-COPY . /app
 
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000", "--reload"]
