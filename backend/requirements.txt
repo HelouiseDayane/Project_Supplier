@@ -11,3 +11,4 @@ pytest
 pytest-flask
 flask-cors
 graphene-file-upload
+gunicorn

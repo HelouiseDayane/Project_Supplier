@@ -13,7 +13,7 @@ services:
     environment:
       - FLASK_ENV=development
       - FLASK_APP=app.app
-      - FLASK_DEBUG=1  # Força o modo de debug
+      - FLASK_DEBUG=1  
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/flask
       - PYTHONPATH=/usr/src/app
 
