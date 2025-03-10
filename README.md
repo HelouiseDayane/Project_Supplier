@@ -140,11 +140,11 @@ mutation {
 
 ```
 
-No terminal ou cmd do seu projeto execute exit e cd .. para voltar a pagina principal do projeto pra sair do container e começar o front.
+No terminal ou cmd do seu projeto execute exit e para voltar a pagina principal do projeto pra sair do container e começar o front.
 
 ```bash
 exit 
-cd ..
+
 ```
 
 ## Rodando o Frontend (React)
@@ -155,7 +155,6 @@ Para rodar o frontend com React, você precisa navegar até a pasta do frontend 
 
 ```bash
 cd clarke-energry
-npm install
 npm run dev
 
 ```
@@ -212,7 +211,7 @@ flask db upgrade
 
  - Rodar os testes unitários com pytest:
 
-  ```bash
+```bash
 docker exec -it projectcomgraphql_web_1 /bin/bash
 pytest
 
@@ -220,12 +219,12 @@ pytest
 
  - Rodar o frontend (React):
 
-  ```bash
-    cd clarke-energy
-    npm install
-    npm run dev
+```bash
+cd clarke-energy
 
-  ```
+npm run dev
+
+```
 
 ## Licença
 
