@@ -23,8 +23,9 @@ EXPOSE 5000
 
 RUN python3 -m venv /app/venv
 
-CMD /bin/bash -c "source /app/venv/bin/activate && flask run --host=0.0.0.0 --port=5000 --reload & \
+CMD /bin/bash -c "source /app/venv/bin/activate && \
+                  flask run --host=0.0.0.0 --port=5000 --reload & \
                   sleep 5 && \
-                  flask db upgrade && \
+                  /app/venv/bin/flask db upgrade && \
                   python3 -m app.database.seeder && \
                   wait $!"
