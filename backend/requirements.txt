@@ -1,6 +1,6 @@
-Flask==2.0.2
+Flask
 Flask-SQLAlchemy
-Flask-Migrate==3.1.0
+Flask-Migrate
 Flask-GraphQL
 graphene
 graphene-sqlalchemy
@@ -11,4 +11,3 @@ pytest
 pytest-flask
 flask-cors
 graphene-file-upload
-gunicorn
