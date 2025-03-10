@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: flask run --host=0.0.0.0 --port=5000 --reload  --debug
+    volumes:
+      - .:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    environment:
+      - FLASK_ENV=development
+      - FLASK_APP=app.app
+      - FLASK_DEBUG=1  # Força o modo de debug
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/flask
+      - PYTHONPATH=/usr/src/app
+
+
+  db:
+    image: postgres:12
+    environment:
+      POSTGRES_DB: flask
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"

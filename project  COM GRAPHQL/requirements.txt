@@ -1,0 +1,13 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-GraphQL
+graphene
+graphene-sqlalchemy
+psycopg2-binary
+Faker
+werkzeug
+pytest
+pytest-flask
+flask-cors
+graphene-file-upload
