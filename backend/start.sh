@@ -1,16 +1,7 @@
 
-#gunicorn -w 4 -b 0.0.0.0:5000 app:app &
-
+source /app/venv/bin/activate
+flask run --host=0.0.0.0 --port=5000 --reload &
 sleep 5
-
-echo "Esperando o banco de dados estar pronto..."
-until flask db upgrade; do
-  echo "Esperando o banco de dados estar pronto..."
-  sleep 5
-done
-
-
+flask db upgrade
 python3 -m app.database.seeder
-
-
 wait $!
