@@ -27,14 +27,15 @@ Primeiro, você precisa construir e iniciar os containers do Docker para o proje
 
 ```bash
 cd project-suppliers
-docker-compose up --build
+docker-compose up --build -d
 
 ```
 ### 2. Rodar o Seed
 
-O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate ao executar o Docker. Para rodar o seed manualmente, execute:
+O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate. Para rodar o seed manualmente, execute:
 
-```bash
+```
+docker exec -it projectcomgraphql_web_1 flask db upgrade
 docker-compose exec web python3 -m app.database.seeder
 
 ```
