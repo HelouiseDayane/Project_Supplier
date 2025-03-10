@@ -6,7 +6,7 @@ Este projeto é composto por um **backend** construído com **Flask** e **GraphQ
 
 - **Backend**: Python, Flask, GraphQL
 - **Frontend**: React, Cypress
-- **Banco de Dados**: (Por favor, especifique qual banco de dados está sendo utilizado, por exemplo: PostgreSQL, MySQL, etc.)
+- **Banco de Dados**: PostgreSQL
 - **Docker**: Para containerização de serviços
 - **Tests**: pytest (unitários), Cypress (end-to-end)
 
@@ -26,13 +26,13 @@ Antes de rodar o projeto, você precisa garantir que tenha o seguinte instalado:
 Primeiro, você precisa construir e iniciar os containers do Docker para o projeto. Execute o seguinte comando para construir a imagem e rodar os containers:
 
 ```bash
-cd project COM GRAPHQL
+cd project-suppliers
 docker-compose up --build
 
 ```
 ### 2. Rodar o Seed
 
-O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo ao executar o Docker. Para rodar o seed, execute:
+O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate ao executar o Docker. Para rodar o seed manualmente, execute:
 
 ```bash
 docker-compose exec web python3 -m app.database.seeder
@@ -76,4 +76,86 @@ Isso vai iniciar o servidor React na porta 5173, e você pode acessar a aplicaç
 
 Página inicial: http://localhost:5173
 Página de criação de fornecedor: http://localhost:5173/create-supplier
+
+
+## Estrutura do Projeto
+
+### Backend
+ - app/: Contém a aplicação Flask
+ - graphql/: Contém os schemas e resolvers GraphQL
+ - database/: Contém a configuração e o seed para o banco de dados usando migrate
+ - models/: Modelos para interagir com o banco de dados
+ - views/: Controladores de lógica do servidor Flask
+ - Dockerfile: Arquivo para construir a imagem Docker do backend
+ - docker-compose.yml: Arquivo de configuração do Docker Compose para rodar o projeto
+
+### Frontend
+
+ - frontend/: Contém a aplicação React
+   * src/: Arquivos fontes do React
+   * public/: Arquivos públicos, como o index.html
+   * cypress/: Contém os testes end-to-end configurados com Cypress
+
+### Comandos Úteis
+ - Construir e iniciar os containers do Docker:
+
+ ```bash
+cd project-suppliers
+docker-compose up --build
+
+
+```
+
+ - Executar a migrate (tabela do banco de dados)
+
+
+ ```bash
+docker exec -it projectcomgraphql_web_1 /bin/bash
+flask db upgrade
+
+```
+
+ - Executar o seed para preencher a tabela de fornecedores:
+
+  ```bash
+docker-compose exec web python3 -m app.database.seeder
+
+```
+
+ - Rodar os testes unitários com pytest:
+
+  ```bash
+docker exec -it projectcomgraphql_web_1 /bin/bash
+pytest
+
+```
+
+ - Rodar o frontend (React):
+
+  ```bash
+    cd clarke-energy
+    npm install
+    npm run dev
+
+  ```
+
+## Licença
+
+Este projeto é licenciado sob a MIT License.
+
+
+### Explicação dos pontos importantes:
+
+1. **Docker**: A documentação explica como construir o Docker e rodar o seed para preencher automaticamente a tabela de fornecedores com dados gerados.
+2. **Testes Unitários**: A documentação explica como rodar os testes unitários com `pytest` dentro do container Docker.
+3. **Frontend**: Instruções para rodar o servidor de desenvolvimento do React e acessar as páginas do sistema.
+4. **Testes E2E (Cypress)**: A documentação inclui instruções sobre como rodar os testes de integração/end-to-end usando Cypress.
+5. **Comandos úteis**: Cada comando necessário para o fluxo de trabalho é listado.
+
+
+
+
+
+
+
 
