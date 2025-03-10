@@ -43,7 +43,7 @@ Antes de rodar o projeto, você precisa garantir que tenha o seguinte instalado:
 Primeiro, você precisa construir e iniciar os containers do Docker para o projeto. Execute o seguinte comando para construir a imagem e rodar os containers:
 
 ```bash
-cd project-suppliers
+cd backend
 docker-compose up --build -d
 
 ```
@@ -52,7 +52,7 @@ docker-compose up --build -d
 O sistema inclui um seed que preenche automaticamente a tabela de fornecedores com 150 fornecedores de exemplo e a migrate. Para rodar o seed manualmente, execute:
 
 ```bash
-docker exec -it  project-suppliers_web_1 /bin/bash
+docker exec -it  backend_web_1 /bin/bash
 flask db upgrade
 ```
 em seguida
@@ -171,7 +171,7 @@ exit
 Para rodar o frontend com React, você precisa navegar até a pasta do frontend e executar o servidor de desenvolvimento:
 
 ```bash
-cd clarke-energry
+cd frontend
 npm run dev
 
 ```
@@ -203,7 +203,7 @@ Página de criação de fornecedor: http://localhost:5173/create-supplier
  - Construir e iniciar os containers do Docker:
 
  ```bash
-cd project-suppliers
+cd backend
 docker-compose up --build
 
 
