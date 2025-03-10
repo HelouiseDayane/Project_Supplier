@@ -53,6 +53,11 @@ O sistema inclui um seed que preenche automaticamente a tabela de fornecedores c
 
 ```bash
 docker exec -it  backend_web_1 /bin/bash
+
+```
+
+```bash
+
 flask db upgrade
 ```
 em seguida
@@ -157,10 +162,11 @@ mutation {
 
 ```
 
-No terminal ou cmd do seu projeto execute exit e para voltar a pagina principal do projeto pra sair do container e começar o front.
+No terminal ou cmd do seu projeto execute exit e cd.. para voltar a pagina principal (ENERGY) do projeto pra sair do container e começar o front.
 
 ```bash
 exit 
+cd ..
 
 ```
 
