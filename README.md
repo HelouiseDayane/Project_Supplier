@@ -1,6 +1,23 @@
 # Projeto com Flask, GraphQL, Docker e React
 
-Este projeto é composto por um **backend** construído com **Flask** e **GraphQL**, e um **frontend** em **React**. O projeto é executado em containers Docker e inclui um **seed** para preencher automaticamente a tabela de fornecedores com dados falsos, além de testes unitários com **pytest** e testes end-to-end com **Cypress**.
+Este projeto é composto por um **backend** construído com **Flask** e **GraphQL**, e um **frontend** em **React.js**. O sistema é  de **busca de fornecedores de energia** que permite realizar operações como Criar, Listar, Atualizar e Deletar para gerenciar fornecedores de energia. O projeto é executado em containers Docker e inclui um seed para preencher automaticamente a tabela de fornecedores com dados falsos. O sistema também inclui **testes unitários** com **pytest** e **testes end-to-end** com **Cypress.**
+
+## Funcionalidades do Sistema
+ - **Buscar Fornecedores:** Realiza consultas para buscar fornecedores de energia com base em filtros como o estado e o custo por kWh.
+ - **CRUD de Fornecedores:** Permite criar, editar e excluir fornecedores de energia através de GraphQL.
+ - **Banco de Dados com Docker:** O banco de dados é configurado no Docker e inicializado automaticamente com um seed que preenche a tabela de fornecedores com dados falsos.
+ - **Frontend React:** O frontend é desenvolvido com React, onde o usuário pode visualizar e interagir com a lista de fornecedores e realizar operações de busca.
+ - **Testes Unitários e End-to-End:** O sistema inclui testes unitários com pytest para garantir o funcionamento do backend e testes end-to-end com Cypress para testar a integração do sistema.
+
+ ## Como Configurar o Projeto
+
+ ### 1. Clonar o Repositório
+
+ ```bash
+git@github.com:HelouiseDayane/Project_Supplier.git
+
+```
+
 
 ## Tecnologias
 
